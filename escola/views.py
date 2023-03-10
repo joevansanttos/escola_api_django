@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from escola.models import Aluno, Curso
-from serializer import AlunosSerializer, CursosSerializer
+from escola.serializer import AlunosSerializer, CursosSerializer
 
 class AlunosViewSet(viewsets.ModelViewSet):
     """ Exibindo todos os alunos e alunas"""
@@ -10,5 +10,5 @@ class AlunosViewSet(viewsets.ModelViewSet):
 
 class CursosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
-    queryset = Cursos.objects.all()
+    queryset = Curso.objects.all()
     serializer_class = CursosSerializer
