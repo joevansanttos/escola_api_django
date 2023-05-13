@@ -9,7 +9,7 @@ from escola.serializer import (
     AlunoSerializerV2,
 )
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 
 
 class AlunosViewSet(viewsets.ModelViewSet):
@@ -17,7 +17,7 @@ class AlunosViewSet(viewsets.ModelViewSet):
 
     queryset = Aluno.objects.all()
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
 
     def get_serializer_class(self):
         if self.request.version == "v2":
@@ -32,7 +32,7 @@ class CursosViewSet(viewsets.ModelViewSet):
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
 
 
 class MatriculaViewSet(viewsets.ModelViewSet):
@@ -53,7 +53,8 @@ class ListaMatriculasAluno(generics.ListAPIView):
 
     serializer_class = ListaMatriculasAlunoSerializer
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
+
 
 
 class ListaAlunosMatriculados(generics.ListAPIView):
